@@ -1,0 +1,31 @@
+{
+  "name": "Coffee Store",
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node",
+      "buildCommand": "next build",
+      "config": {
+        "distDir": "your-output-directory"
+      }
+       
+    }
+  ],
+  "functions": {
+    "controllers/*.js": {
+      "maxDuration": 60
+    },
+    "middleware/**/*.js": {
+      "maxDuration": 60
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/",
+      "method": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+
+    }
+  ]
+}
